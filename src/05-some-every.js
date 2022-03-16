@@ -13,21 +13,40 @@ const exampleSongData = require("../data/songs");
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {boolean}
  */
-function allSongsAreOverTwoMinutes(songs) {}
+//every is another JS array method that checks to see if every single element in the array meets a certain condition. Like forEach, map, and filter it also takes in a callback function
+//Every evaluates to a Boolean.
+
+// Note: Just like with map, forEach, and filter, the callback that every takes in will also be automatically passed an optional index argument.
+
+// The every method's callback also needs to return something, otherwise all values would be falsy by default (because it'd return undefined) and it would evaluate to false.
+
+const allSongsAreOverTwoMinutes = (songs) => {
+  return songs.every((song) => {
+    return song.runtimeInseconds > 120;
+  });
+};
 
 /**
  * Returns `true` if any song is over four minutes. Otherwise, return `false`.
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {boolean}
  */
-function anySongIsOverFourMinutes(songs) {}
+const anySongIsOverFourMinutes = (songs) => {
+  return songs.some((song) => {
+    return song.runtimeInseconds > 240;
+  });
+};
 
 /**
  * Returns `true` if any song is by the artist "Peanut". Otherwise, return `false`.
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {boolean}
  */
-function anySongIsByPeanut(songs) {}
+function anySongIsByPeanut(songs) {
+  return songs.some((song) => {
+    return song.artist === "Peanut";
+  });
+}
 
 module.exports = {
   allSongsAreOverTwoMinutes,

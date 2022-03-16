@@ -13,8 +13,17 @@ const exampleSongData = require("../data/songs");
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {Object[]}
  */
-function sortByRuntimeAscending(songs) {}
+//Sort does NOT return a new array. It returns the ORIGINAL array now sorted. In other words it mutates the array. This is important to remember because sort will actually change your data. You don't need to capture its return value in a variable because the original variable that points to the array will be updated. This is different than the other methods mentioned earlier in this lesson.By default, sort will sort alphabetically
+//The takeaway: When we want to sort by something non alphabetical we need to pass sort a callback compare function. That compareFunction requires two arguments and will allow sort return an array based on the return value of those compared elements.
 
+//Let's say the compareFunction takes arguments a and b. If the compareFunction returns less than 0, sort puts a first. If the compareFunction returns greater than 0, sort puts b first. If the compareFunction returns 0, neither elements position is changed.
+
+const sortByRuntimeAscending = (songs) => {
+  return songs.sort((a, b) => a.runtimeInSeconds - b.runtimeInSeconds);
+};
+//if(a.runtimeInSeconds < b.runtimeInSeconds){
+//return -1
+//}
 /**
  * Reorders the array so that the song objects are organized by their artist name. The artist that comes last in the alphabet should come first.
  *
@@ -23,7 +32,14 @@ function sortByRuntimeAscending(songs) {}
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {Object[]}
  */
-function sortByArtistNameDescending(songs) {}
+//sort converts all elements into a string
+const sortByArtistNameDescending = (songs) => {
+  return songs.sort((a, b) => {
+    if (a.artist.toLowerCase() > b.artist.toLowerCase()) {
+      return -1;
+    }
+  });
+};
 
 /**
  * Reorders the array so that the song objects are organized by their song title. The title that comes first in the alphabet should come first.
@@ -33,7 +49,13 @@ function sortByArtistNameDescending(songs) {}
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {Object[]}
  */
-function sortBySongTitleAscending(songs) {}
+const sortBySongTitleAscending = (songs) => {
+  return songs.sort((a, b) => {
+    if (a.title.toLowerCase() < b.title.toLowerCase()) {
+      return -1;
+    }
+  });
+};
 
 module.exports = {
   sortByRuntimeAscending,

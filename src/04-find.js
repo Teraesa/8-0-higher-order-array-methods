@@ -5,6 +5,7 @@
 
   Keep in mind that your functions must still have and use a parameter for accepting all songs.
 */
+const songs = require("../data/songs");
 const exampleSongData = require("../data/songs");
 // Do not change the line above.
 
@@ -13,21 +14,28 @@ const exampleSongData = require("../data/songs");
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {Object} A single object.
  */
-function findPinkElephantsByTimestreet(songs) {}
+//The find() method returns the first element in the provided array that satisfies the provided testing function. If no values satisfy the testing function, undefined is returned.
+const findPinkElephantsByTimestreet = (songs) => {
+  return songs.find((song) => song.title === "Pink Elephants");
+};
 
 /**
  * Returns the first song in the list that is under three minutes.
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {Object} A single object.
  */
-function findFirstSongUnderThreeMinutes(songs) {}
+const findFirstSongUnderThreeMinutes = (songs) => {
+  return songs.find((song) => song.runtimeInSeconds < 180);
+};
 
 /**
  * Returns the first song in the list where the song title equals the song album.
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {Object} A single object.
  */
-function findFirstTitleTrack(songs) {}
+const findFirstTitleTrack = (songs) => {
+  return songs.find((song) => song.title === song.album);
+};
 
 module.exports = {
   findPinkElephantsByTimestreet,
